@@ -38,11 +38,21 @@ if (!$result) {
 		$idCliente = $dados[$i]['idCliente'];
 		$idCliente = intval($idCliente);
 		
+		//nome do cliente
 		$sqlCliente = "SELECT * FROM tab_clientes WHERE idCliente = '$idCliente'";
 		$resultCliente = $conn->query($sqlCliente);
 		$cliente = $resultCliente -> fetch_assoc();
 		$dados[$i]['nome_cliente'] = $cliente['nome'];
 		
+		//nome do produto
+		$idProduto = $dados[$i]['idProduto'];
+		$idProduto = intval($idProduto);
+		
+		$sqlProduto = "SELECT * FROM tab_produto WHERE idProduto = '$idProduto'";
+		$resultProduto = $conn->query($sqlProduto);
+		$produto = $resultProduto -> fetch_assoc();
+		$dados[$i]['nome_produto'] = $produto['nome_produto'];
+		//var_dump($produto['nome_produto']);
 	 } 
 
  	//echo json_encode($dados, JSON_PRETTY_PRINT); 
