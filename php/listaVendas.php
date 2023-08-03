@@ -35,9 +35,18 @@ if (!$result) {
 	 for($i = 0; $i<$n; $i++) { 
 	 	$dados[] = $result -> fetch_assoc(); 
 	 	//$dados[$i]['Nome'] = utf8_encode($dados[$i]['Nome']);
+		$idCliente = $dados[$i]['idCliente'];
+		$idCliente = intval($idCliente);
+		
+		$sqlCliente = "SELECT * FROM tab_clientes WHERE idCliente = '$idCliente'";
+		$resultCliente = $conn->query($sqlCliente);
+		$cliente = $resultCliente -> fetch_assoc();
+		$dados[$i]['nome_cliente'] = $cliente['nome'];
+		
 	 } 
 
- 	echo json_encode($dados, JSON_PRETTY_PRINT); 
+ 	//echo json_encode($dados, JSON_PRETTY_PRINT); 
  } 
 }
+echo json_encode($dados, JSON_PRETTY_PRINT); 
 ?>

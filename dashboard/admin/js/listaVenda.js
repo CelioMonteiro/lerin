@@ -14,7 +14,7 @@ function nome_cliente()
   {
     $.ajax({
       type: "GET",
-      url: "http://localhost/lerin/php/listaClientes.php",
+      url: "http://localhost/Slerin/lerin/php/listaClientes.php",
       contentType: false,
       cache: false,
       dataType: "json",

@@ -22,10 +22,10 @@ $.ajax({
         console.log(retorno);
         for(var i = 0; i<retorno.length; i++){
             
-            var nome        = retorno.nome;
-            var telefone    = retorno.telefone;
-            var email       = retorno.email;
-            var endereco    = retorno.endereco;
+            var nome        = retorno[i].nome;
+            var telefone    = retorno[i].telefone;
+            var email       = retorno[i].email;
+            var endereco    = retorno[i].endereco;
             document.getElementById("listaClientes").innerHTML += '<tr><td>'+nome+'</td><td>'+email+'</td><td>'+telefone+'</td><td class="text-right"><a href="">editar</a></td></tr>';
         }
        
@@ -35,7 +35,7 @@ $.ajax({
       alert(xhr.responseText);
     }
   }); 
-
+/*
   $.ajax({
     type: "GET",
     url: "http://localhost/lerin/php/listaClientes.php?idUser="+idUser,
@@ -46,7 +46,7 @@ $.ajax({
     processData:false,
     success: function(retorno1){
         console.log(retorno1);
-        for(var i = 0; i<retorno.length; i++){
+        for(var i = 0; i<retorno1.length; i++){
             
 
             var idUser      = retorno1[i].idUser;
@@ -64,3 +64,4 @@ $.ajax({
       alert(xhr.responseText);
     }
   }); 
+  */
