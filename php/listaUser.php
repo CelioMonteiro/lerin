@@ -12,7 +12,6 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-
 if(!$conn) {
 	echo '[{"erro": "Não foi possível conectar ao banco"';
 	echo '}]';
