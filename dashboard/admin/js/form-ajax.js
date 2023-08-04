@@ -204,6 +204,7 @@ jQuery(document).ready(function(){
       
       {
        alert('cadastro realizado com sucesso')
+       window.location.reload()
        //window.location.replace("login.html")
       },
 
