@@ -143,6 +143,7 @@ jQuery(document).ready(function(){
       
       {
        alert('cadastro realizado com sucesso')
+       window.location.reload()
        //window.location.replace("login.html")
       },
 
@@ -173,6 +174,7 @@ jQuery(document).ready(function(){
       
       {
        alert('cadastro realizado com sucesso')
+       window.location.reload()
        //window.location.replace("login.html")
       },
 
@@ -188,7 +190,7 @@ jQuery(document).ready(function(){
   });
 });
 
-//FORM GRAVAR-CLIENTE
+//FORM GRAVAR-PRODUTO
 jQuery(document).ready(function(){
   jQuery('#gravarProduto').submit(function(){
     var dados = jQuery( this ).serialize();

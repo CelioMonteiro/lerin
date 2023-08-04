@@ -15,7 +15,7 @@ if(!$conn) {
 	echo '}]';
  }else {
 	//SQL de BUSCA LISTAGEM
-	$sql = "SELECT * FROM tab_clientes WHERE idUser = 2";
+	$sql = "SELECT * FROM tab_clientes WHERE idUser = 2 ORDER BY idcliente DESC";
 	$result = $conn->query($sql);
 	$n =mysqli_num_rows($result);
  

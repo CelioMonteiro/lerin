@@ -1,43 +1,53 @@
 <?php 
 header("Access-Control-Allow-Origin: *");
-header('Content-Type:' . "text/plain");
 
 include_once 'conexao.php';
 
+$idRepresentante	= $_POST['idRepresentante'];
+$nome_produto	    = $_POST['nome_produto'];
+$descricao          = $_POST['descricao'];
+$preco              = $_POST['preco'];
+$quantidade           = $_POST['quantidade'];
+
+// Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-if(!$conn) {
-	echo '[{"erro": "Não foi possível conectar ao banco"';
-	echo '}]';
- }else {
-	//SQL de BUSCA LISTAGEM
-	$sql = "SELECT * FROM tab_produto WHERE idRepresentante = 2";
-	//$sql = "SELECT * FROM Municipio";
-	
-	$result = $conn->query($sql);
-	$n =mysqli_num_rows($result);
- 
-if (!$result) {
- //Caso não haja retorno
-	 echo '[{"erro": "Há algum erro com a busca. Não retorna resultados"';
-	 echo '}]';
- }else if($n<1) {
- //Caso não tenha nenhum item
-	 echo '[{"erro": "Não há nenhum dado cadastrado"';
-	 echo '}]';
- }else {
-	 
-	 //Mesclar resultados em um array
-	 for($i = 0; $i<$n; $i++) { 
-	 	$dados[] = $result -> fetch_assoc(); 
-	 	//$dados[$i]['Nome'] = utf8_encode($dados[$i]['Nome']);
-	 } 
+$sql = "INSERT INTO 
+        tab_produto
+            (
+			idRepresentante,
+            nome_produto, 
+            descricao,
+            preco,
+            quantidade,
+            data_cadastro
+            ) 
+        VALUES 		
+        (
+            '$idRepresentante',
+            '$nome_produto', 
+            '$descricao',
+            '$preco',
+            '$quantidade',
+            current_timestamp()
+        )";
 
- 	echo json_encode($dados, JSON_PRETTY_PRINT); 
- } 
-}
+if ($conn->query($sql) === TRUE) {
+        //include_once ('pegarultimoid.php');
+        //include_once ('enviar_emailValidacao.php');
+        //echo '<script>alert("venda Realizado com sucesso!")</script>';
+        //echo '<script>window.location.href = "localhsot/lerin/web/signup.html";</script>';
+        $flag = 1;
+    } else {
+        $flag = 0;
+        //echo '<script>alert("Tivemos um erro! Tente novamente mais tarde")</script>';
+        //echo '<script>window.location.href = "localhsot/lerin/web/signup.html";</script>';
+        
+        }
+
+$conn->close();
 ?>
