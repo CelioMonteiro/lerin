@@ -12,7 +12,7 @@ var idUser = datas.idUser
 
   $.ajax({
     type: "GET",
-    url: "http://localhost/lerin/php/listaVendas.php?idRepresentante="+idUser,
+    url: "http://localhost/Slerin/lerin/php/listaVendas.php?idRepresentante="+idUser,
     contentType: false,
     cache: false,
     dataType: "json",
@@ -28,8 +28,8 @@ var idUser = datas.idUser
             let quantidade          = retorno[i].quantidade;
             let descricao           = retorno[i].descricao;
             let data_cadsatro       = retorno[i].data_cadsatro;
-            let nome_cliente = retorno[i].nome_cliente
-            let nome_produto = retorno[i].nome_produto;
+            let nome_cliente        = retorno[i].nome_cliente
+            let nome_produto        = retorno[i].nome_produto;
              
             document.getElementById("listaVendas").innerHTML += '<tr><td>'+nome_cliente+'</td><td>'+nome_produto+'</td><td>'+quantidade+'</td><td class="text-right"><a href="">editar</a></td></tr>';
         }

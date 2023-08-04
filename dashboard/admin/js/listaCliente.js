@@ -35,33 +35,3 @@ $.ajax({
       alert(xhr.responseText);
     }
   }); 
-/*
-  $.ajax({
-    type: "GET",
-    url: "http://localhost/lerin/php/listaClientes.php?idUser="+idUser,
-    contentType: false,
-    cache: false,
-    dataType: "json",
-    data: datas,
-    processData:false,
-    success: function(retorno1){
-        console.log(retorno1);
-        for(var i = 0; i<retorno1.length; i++){
-            
-
-            var idUser      = retorno1[i].idUser;
-            var nome        = retorno1[i].nome;
-            var telefone    = retorno1[i].telefone;
-            var email       = retorno1[i].email;
-            var endereco    = retorno1[i].endereco;
-            
-            document.getElementById("idCliente").innerHTML += ' <option value="'+idUser+'">'+nome+'</option>';
-        }
-       
-    },
-      error: function(xhr, status, error) {
-      alert('erro')
-      alert(xhr.responseText);
-    }
-  }); 
-  */

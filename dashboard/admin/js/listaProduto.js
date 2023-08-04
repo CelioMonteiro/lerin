@@ -12,7 +12,7 @@ var idUser = datas.idUser
 
 $.ajax({
     type: "GET",
-    url: "http://localhost/lerin/php/listaProduto.php?idRepresentante="+idUser,
+    url: "http://localhost/Slerin/lerin/php/listaProduto.php?idRepresentante="+idUser,
     contentType: false,
     cache: false,
     dataType: "json",

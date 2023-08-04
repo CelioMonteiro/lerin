@@ -103,7 +103,7 @@ jQuery(document).ready(function(){
       var dados = new FormData(this);
       jQuery.ajax({
         type: "POST",
-        url: "http://localhost/lerin/php/cadastro_user.php",
+        url: "http://localhost/Slerin/lerin/php/cadastro_user.php",
         data: dados,
         contentType: false,
         cache: false,
@@ -134,7 +134,7 @@ jQuery(document).ready(function(){
     var dados = new FormData(this);
     jQuery.ajax({
       type: "POST",
-      url: "http://localhost/lerin/php/criar_venda.php",
+      url: "http://localhost/Slerin/lerin/php/criar_venda.php",
       data: dados,
       contentType: false,
       cache: false,
@@ -164,7 +164,7 @@ jQuery(document).ready(function(){
     var dados = new FormData(this);
     jQuery.ajax({
       type: "POST",
-      url: "http://localhost/lerin/php/criar_cliente.php",
+      url: "http://localhost/Slerin/lerin/php/criar_cliente.php",
       data: dados,
       contentType: false,
       cache: false,
@@ -195,7 +195,7 @@ jQuery(document).ready(function(){
     var dados = new FormData(this);
     jQuery.ajax({
       type: "POST",
-      url: "http://localhost/lerin/php/criar_produto.php",
+      url: "http://localhost/Slerin/lerin/php/criar_produto.php",
       data: dados,
       contentType: false,
       cache: false,
@@ -225,7 +225,7 @@ jQuery(document).ready(function(){
     var dados = jQuery( this ).serialize();
     jQuery.ajax({
       type: "POST",
-      url: "http://localhost/lerin/php/logar.php",
+      url: "http://localhost/Slerin/lerin/php/logar.php",
       data: dados,
       success: function(data)
       {
