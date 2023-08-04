@@ -203,9 +203,10 @@ Coded by www.creative-tim.com
                   <div class="row">
                     <div class="col-md-6 pr-1">
                       <div class="form-group">
-                        <label>Representante (disabled)</label>
-                        <input type="text" class="form-control" disabled="" placeholder="Company" value="Celio">
-                        <input type="hidden" value="2" name="idRepresentante" />
+                        <label>Representante</label>
+                        
+                        <div id="mostraUser"></div>
+                        
                       </div>
                     </div>
                   </div>
@@ -335,6 +336,50 @@ Coded by www.creative-tim.com
       document.getElementById("BtnNovo").style.display = "block"
       document.getElementById("BtnListagem").style.display = "none"
     }
+  </script>
+  <script>
+    function mostrarNomeRepresentante()
+    {
+      var query = location.search.slice(1);
+      var partes = query.split('&');
+      var datas = {};
+      partes.forEach(function (parte) {
+        var chaveValor = parte.split('=');
+        var chave = chaveValor[0];
+        var valor = chaveValor[1];
+        datas[chave] = valor;
+      });
+
+      var idUser = datas.idUser
+
+      $.ajax({
+          type: "GET",
+          url: "http://localhost/Slerin/lerin/php/listaUser.php?idUser="+idUser,
+          contentType: false,
+          cache: false,
+          dataType: "json",
+          data: datas,
+          processData:false,
+          success: function(retorno){
+              console.log(retorno);
+              for(var i = 0; i<retorno.length; i++){
+                  
+                  let primeiro_nome = retorno[i].primeiro_nome; 
+                  var segundo_nome  = retorno[i].segundo_nome;
+                  var telefone    = retorno[i].telefone;
+                  var email       = retorno[i].email;
+                  document.getElementById("mostraUser").innerHTML += '<input type="text" class="form-control" disabled="" placeholder="Company" value="'+primeiro_nome+'"><input type="hidden" value="'+idUser+'" name="idRepresentante" />';
+              }
+            
+          },
+            error: function(xhr, status, error) {
+            alert('erro')
+            alert(xhr.responseText);
+          }
+        }); 
+
+    }
+    mostrarNomeRepresentante()
   </script>
 </body>
 

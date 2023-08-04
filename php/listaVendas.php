@@ -4,6 +4,8 @@ header('Content-Type:' . "text/plain; charset=utf-8'");
 
 include_once 'conexao.php';
 
+$idUser = $_GET['idRepresentante'];
+
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
 if ($conn->connect_error) {
@@ -15,7 +17,7 @@ if(!$conn) {
 	echo '}]';
  }else {
 	//SQL de BUSCA LISTAGEM
-	$sql = "SELECT * FROM tab_venda WHERE idRepresentante = 2 ORDER BY idVenda desc";
+	$sql = "SELECT * FROM tab_venda WHERE idRepresentante = '$idUser' ORDER BY idVenda desc";
 	//$sql = "SELECT * FROM Municipio";
 	
 	$result = $conn->query($sql);

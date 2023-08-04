@@ -1,73 +1,3 @@
-//Enviar Estado
-jQuery(document).ready(function(){
-  // Evento Submit do formulário
-$('#filtroEstado').submit(function() {
- 
-  var dadosForm = jQuery( this ).serialize();
-  dadosForm = dadosForm.split('&');
-
-  var dados = new FormData(this);
-   
-  $.ajax({
-    type: "POST",
-    dataType: "json",
-    url: "https://www.superlerin.com.br/boa/php/FiltroEstado.php",
-    data:  dados,
-    contentType: false,
-    cache: false,
-    processData:false,
-    success: function(retorno){
-      
-      var idUser = retorno.idUser
-      var idEstado = retorno.idEstado
-      var idCidade = retorno.idCidade
-     // console.log(idUser)
-     window.location.href = 'categoria.html?idUser='+idUser+'&cidade='+idCidade; 
-    
-    },
-      error: function(xhr, status, error) {
-      alert(xhr.responseText);
-    }
-
-  });
-    return false;
-});
-});
-
-//enviar cidade / estado
-jQuery(document).ready(function(){
-    // Evento Submit do formulário
-  $('#filtroCidade').submit(function() {
-   
-    var dadosForm = jQuery( this ).serialize();
-    dadosForm = dadosForm.split('&');
-  
-    var dados = new FormData(this);
-     
-    $.ajax({
-      type: "POST",
-      dataType: "json",
-      url: "https://www.superlerin.com.br/boa/php/filtroCidade.php",
-      data:  dados,
-      contentType: false,
-      cache: false,
-      processData:false,
-      success: function(retorno){
-        
-        var idUser = retorno.idUser
-        var idCidade = retorno.idCidade
-       // console.log(idUser)
-        window.location.href = 'filtroCategoria.html?idUser='+idUser+'&cidade='+idCidade;  	
-      
-      },
-        error: function(xhr, status, error) {
-        alert(xhr.responseText);
-      }
-
-    });
-      return false;
-  });
-});
 
 jQuery(document).ready(function(){
     // Evento Submit do formulário
@@ -188,7 +118,7 @@ jQuery(document).ready(function(){
   });
 });
 
-//FORM GRAVAR-CLIENTE
+//FORM GRAVAR-PRODUTO
 jQuery(document).ready(function(){
   jQuery('#gravarProduto').submit(function(){
     var dados = jQuery( this ).serialize();
@@ -238,7 +168,7 @@ jQuery(document).ready(function(){
         if(idUser != 0){
           //console.log(userName)
           alert('Seja Bem Vindo')
-          window.location.replace("http://localhost/lerin/dashboard/admin/criar_cliente.html?idUser="+idUser)
+          window.location.replace("http://localhost/slerin/lerin/dashboard/admin/criar_cliente.html?idUser="+idUser)
         }
         else
         {
@@ -247,8 +177,6 @@ jQuery(document).ready(function(){
           location.reload();
         }
     
-        
-
       },
       error: function(xhr, status, error) {
         alert(xhr.responseText);

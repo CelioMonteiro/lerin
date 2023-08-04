@@ -4,6 +4,8 @@ header('Content-Type:' . "text/plain");
 
 include_once 'conexao.php';
 
+$idUser = $_GET['idUser'];
+
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
 if ($conn->connect_error) {
@@ -16,7 +18,7 @@ if(!$conn) {
 	echo '}]';
  }else {
 	//SQL de BUSCA LISTAGEM
-	$sql = "SELECT * FROM tab_user";
+	$sql = "SELECT * FROM tab_user WHERE idUser='$idUser'";
 	//$sql = "SELECT * FROM Municipio";
 	
 	$result = $conn->query($sql);
