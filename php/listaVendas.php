@@ -15,7 +15,7 @@ if(!$conn) {
 	echo '}]';
  }else {
 	//SQL de BUSCA LISTAGEM
-	$sql = "SELECT * FROM tab_venda WHERE idRepresentante = 2";
+	$sql = "SELECT * FROM tab_venda WHERE idRepresentante = 2 ORDER BY idVenda desc";
 	//$sql = "SELECT * FROM Municipio";
 	
 	$result = $conn->query($sql);

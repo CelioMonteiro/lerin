@@ -222,11 +222,8 @@ Coded by www.creative-tim.com
                     <div class="col-md-6 pr-1">
                       <div class="form-group">
                         <label>Produto</label>
-                        <select class="form-control" name="idProduto"> 
-                          <option value="1">Serviço 1</option>
-                          <option value="2">Serviço 2</option>
-                          <option value="3">Serviço 3</option>
-
+                        <select class="form-control" name="idProduto" id="lisgtagemNomeProdutos"> 
+                          
                         </select>
                         <!--input type="text" class="form-control" placeholder="Company" value="Chet"-->
                       </div>
@@ -267,6 +264,9 @@ Coded by www.creative-tim.com
               <div class="table-responsive">
                 <table class="table">
                   <thead class=" text-primary">
+                    <th>
+                      venda
+                    </th>
                     <th>
                       Cliente
                     </th>
@@ -386,8 +386,53 @@ Coded by www.creative-tim.com
         }
       });
   }
-     
+  listaNomeClientes()
 
+  </script>
+
+  <script>
+    function listaNomeProdutos()
+    {
+      var query = location.search.slice(1);
+      var partes = query.split('&');
+      var datas = {};
+      partes.forEach(function (parte) {
+        var chaveValor = parte.split('=');
+        var chave = chaveValor[0];
+        var valor = chaveValor[1];
+        datas[chave] = valor;
+      });
+
+      var idUser = datas.idUser
+
+      $.ajax({
+          type: "GET",
+          url: "http://localhost/Slerin/lerin/php/listaProduto.php?idRepresentante="+idUser,
+          contentType: false,
+          cache: false,
+          dataType: "json",
+          data: datas,
+          processData:false,
+          success: function(retorno){
+              console.log(retorno);
+              for(var i = 0; i<retorno.length; i++){
+                  console.log(retorno)
+                  var idProduto           = retorno[i].idProduto;
+                  var nome_produto        = retorno[i].nome_produto;
+                  
+                  document.getElementById("lisgtagemNomeProdutos").innerHTML += '<option value="'+idProduto+'">'+nome_produto+'</option>';
+              }
+            
+          },
+            error: function(xhr, status, error) {
+            alert('erro')
+            alert(xhr.responseText);
+          }
+        }); 
+
+  }
+  
+  listaNomeProdutos()
   </script>
 </body>
 

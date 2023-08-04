@@ -21,7 +21,7 @@ var idUser = datas.idUser
     success: function(retorno){
         
         for(var i = 0; i<retorno.length; i++){
-           
+            let idVenda             = retorno[i].idVenda;
             let idCliente           = retorno[i].idCliente;
             let idRepresentante     = retorno[i].idRepresentante;
             let idProduto           = retorno[i].idProduto;
@@ -31,7 +31,7 @@ var idUser = datas.idUser
             let nome_cliente        = retorno[i].nome_cliente
             let nome_produto        = retorno[i].nome_produto;
              
-            document.getElementById("listaVendas").innerHTML += '<tr><td>'+nome_cliente+'</td><td>'+nome_produto+'</td><td>'+quantidade+'</td><td class="text-right"><a href="">editar</a></td></tr>';
+            document.getElementById("listaVendas").innerHTML += '<tr><td>'+idVenda+'</td><td>'+nome_cliente+'</td><td>'+nome_produto+'</td><td>'+quantidade+'</td><td class="text-right"><a href="">editar</a></td></tr>';
         }
        
     },
