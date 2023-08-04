@@ -4,6 +4,8 @@ header('Content-Type:' . "text/plain");
 
 include_once 'conexao.php';
 
+$idUser = $_GET['idRepresentante'];
+
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
 if ($conn->connect_error) {
@@ -15,9 +17,7 @@ if(!$conn) {
 	echo '}]';
  }else {
 	//SQL de BUSCA LISTAGEM
-	$sql = "SELECT * FROM tab_produto WHERE idRepresentante = 2";
-	//$sql = "SELECT * FROM Municipio";
-	
+	$sql = "SELECT * FROM tab_produto WHERE idRepresentante = '$idUser'";
 	$result = $conn->query($sql);
 	$n =mysqli_num_rows($result);
  

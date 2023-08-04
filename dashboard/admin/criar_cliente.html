@@ -52,67 +52,8 @@ Coded by www.creative-tim.com
         </a>
       </div>
       <div class="sidebar-wrapper">
-        <ul class="nav">
-          <li>
-            <a href="./dashboard.html">
-              <i class="nc-icon nc-bank"></i>
-              <p>Dashboard</p>
-            </a>
-          </li>
-          <li class="active ">
-            <a href="./criar_cliente.html">
-              <i class="nc-icon nc-single-02"></i>
-              <p>Clientes</p>
-            </a>
-          </li>
-          <li>
-            <a href="./criar_venda.html">
-              <i class="nc-icon nc-single-copy-04"></i>
-              <p>Venda</p>
-            </a>
-          </li>
-          <li>
-            <a href="./criar_produto.html">
-              <i class="nc-icon nc-bag-16"></i>
-              <p>Produto</p>
-            </a>
-          </li>
-          <!--li>
-            <a href="./icons.html">
-              <i class="nc-icon nc-diamond"></i>
-              <p>Icons</p>
-            </a>
-          </li>
-          <li>
-            <a href="./map.html">
-              <i class="nc-icon nc-pin-3"></i>
-              <p>Maps</p>
-            </a>
-          </li>
-          <li>
-            <a href="./notifications.html">
-              <i class="nc-icon nc-bell-55"></i>
-              <p>Notifications</p>
-            </a>
-          </li>
-          <li>
-            <a href="./user.html">
-              <i class="nc-icon nc-single-02"></i>
-              <p>User Profile</p>
-            </a>
-          </li>
-          <li>
-            <a href="./tables.html">
-              <i class="nc-icon nc-tile-56"></i>
-              <p>Table List</p>
-            </a>
-          </li>
-          <li>
-            <a href="./typography.html">
-              <i class="nc-icon nc-caps-small"></i>
-              <p>Typography</p>
-            </a>
-          </li-->
+        <ul class="nav" id="listarMenu">
+         
           <li class="active-pro">
             <a href="./upgrade.html">
               <i class="nc-icon nc-spaceship"></i>
@@ -380,6 +321,25 @@ Coded by www.creative-tim.com
 
     }
     mostrarNomeRepresentante()
+  </script>
+  <script>
+    function motrarMenu()
+    {
+      var query = location.search.slice(1);
+      var partes = query.split('&');
+      var datas = {};
+      partes.forEach(function (parte) {
+        var chaveValor = parte.split('=');
+        var chave = chaveValor[0];
+        var valor = chaveValor[1];
+        datas[chave] = valor;
+      });
+  
+      var idUser = datas.idUser
+  
+      document.getElementById("listarMenu").innerHTML += '<li><a href="./dashboard.html?idUser='+idUser+'"><i class="nc-icon nc-bank"></i><p>Dashboard</p></a></li><li class="active"><a href="./criar_cliente.html?idUser='+idUser+'"><i class="nc-icon nc-single-02"></i><p>Clientes</p></a></li><li><a href="./criar_venda.html?idUser='+idUser+'"><i class="nc-icon nc-single-copy-04"></i><p>Venda</p></a></li><li><a href="./criar_produto.html?idUser='+idUser+'"><i class="nc-icon nc-bag-16"></i><p>Produto</p></a></li>'
+    }
+    motrarMenu()
   </script>
 </body>
 

@@ -21,6 +21,7 @@ var idUser = datas.idUser
     success: function(retorno){
         
         for(var i = 0; i<retorno.length; i++){
+
             let idVenda             = retorno[i].idVenda;
             let idCliente           = retorno[i].idCliente;
             let idRepresentante     = retorno[i].idRepresentante;
