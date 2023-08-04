@@ -209,7 +209,7 @@ Coded by www.creative-tim.com
                     <div class="col-md-4 px-1">
                       <div class="form-group">
                         <label>Cliente</label>
-                        <select class="form-control" name="idCliente" id="idCliente">
+                        <select class="form-control" name="idCliente" id="listaNomeCliente">
                           
 
                         </select>
@@ -345,6 +345,49 @@ Coded by www.creative-tim.com
       document.getElementById("BtnNovo").style.display          = "block"
       document.getElementById("BtnListagem").style.display      = "none"
     }
+  </script>
+  <script>
+  function listaNomeClientes()
+  {
+    var query = location.search.slice(1);
+    var partes = query.split('&');
+    var datas = {};
+    partes.forEach(function (parte) {
+      var chaveValor = parte.split('=');
+      var chave = chaveValor[0];
+      var valor = chaveValor[1];
+      datas[chave] = valor;
+    });
+
+    var idUser = datas.idUser
+
+    $.ajax({
+        type: "GET",
+        url: "http://localhost/Slerin/lerin/php/listaClientes.php?idUser="+idUser,
+        contentType: false,
+        cache: false,
+        dataType: "json",
+        data: datas,
+        processData:false,
+        success: function(retorno){
+            console.log(retorno);
+            for(var i = 0; i<retorno.length; i++){
+                
+                var idCliente     = retorno[i].idCliente;
+                var nome_cliente  = retorno[i].nome;
+                
+                document.getElementById("listaNomeCliente").innerHTML += '<option value="'+idCliente+'">'+nome_cliente+'</option>';
+            }
+          
+        },
+          error: function(xhr, status, error) {
+          alert('erro')
+          alert(xhr.responseText);
+        }
+      });
+  }
+     
+
   </script>
 </body>
 
