@@ -103,7 +103,7 @@ jQuery(document).ready(function(){
       var dados = new FormData(this);
       jQuery.ajax({
         type: "POST",
-        url: "http://localhost/lerin/php/cadastro_user.php",
+        url: "http://localhost/Slerin/lerin/php/cadastro_user.php",
         data: dados,
         contentType: false,
         cache: false,
@@ -127,37 +127,6 @@ jQuery(document).ready(function(){
     });
   });
 
-//FORM GRAVAR-CLIENTE
-jQuery(document).ready(function(){
-  jQuery('#gravarCliente').submit(function(){
-    var dados = jQuery( this ).serialize();
-    var dados = new FormData(this);
-    jQuery.ajax({
-      type: "POST",
-      url: "http://localhost/lerin/php/criar_cliente.php",
-      data: dados,
-      contentType: false,
-      cache: false,
-      processData:false,
-      success: function( data )
-      {
-        alert('cadastro de cliente realizado com sucesso')
-        //window.location.replace("login.html")
-      },
-      error: function(xhr, status, error) 
-      {
-        //$('#formUser').hide();
-        //document.getElementById('msgErro_cadastro').innerHTML = 'OPS! tivemos um erro :(';
-        //$('#msgSucess_logar').show(); 
-        alert(xhr.responseText);
-      }
-    });
-    
-    return false;
-  });
-});
-
-
 //FORM GRAVAR-VENDA
 jQuery(document).ready(function(){
   jQuery('#gravarVenda').submit(function(){
@@ -165,36 +134,98 @@ jQuery(document).ready(function(){
     var dados = new FormData(this);
     jQuery.ajax({
       type: "POST",
-      url: "http://localhost/lerin/php/criar_venda.php",
+      url: "http://localhost/Slerin/lerin/php/criar_venda.php",
       data: dados,
       contentType: false,
       cache: false,
       processData:false,
       success: function( data )
+      
       {
-       alert('cadastro de venda realizado com sucesso')
+       alert('cadastro realizado com sucesso')
        //window.location.replace("login.html")
       },
-      error: function(xhr, status, error) 
-      {
+
+      error: function(xhr, status, error) {
         //$('#formUser').hide();
         //document.getElementById('msgErro_cadastro').innerHTML = 'OPS! tivemos um erro :(';
-        //$('#msgSucess_logar').show(); 
-        alert(xhr.responseText);
+        $('#msgSucess_logar').show(); 
+          alert(xhr.responseText);
       }
     });
     
     return false;
   });
 });
-  
+//FORM GRAVAR-CLIENTE
+jQuery(document).ready(function(){
+  jQuery('#gravarCliente').submit(function(){
+    var dados = jQuery( this ).serialize();
+    var dados = new FormData(this);
+    jQuery.ajax({
+      type: "POST",
+      url: "http://localhost/Slerin/lerin/php/criar_cliente.php",
+      data: dados,
+      contentType: false,
+      cache: false,
+      processData:false,
+      success: function( data )
+      
+      {
+       alert('cadastro realizado com sucesso')
+       //window.location.replace("login.html")
+      },
+
+      error: function(xhr, status, error) {
+        //$('#formUser').hide();
+        //document.getElementById('msgErro_cadastro').innerHTML = 'OPS! tivemos um erro :(';
+        $('#msgSucess_logar').show(); 
+          alert(xhr.responseText);
+      }
+    });
+    
+    return false;
+  });
+});
+
+//FORM GRAVAR-CLIENTE
+jQuery(document).ready(function(){
+  jQuery('#gravarProduto').submit(function(){
+    var dados = jQuery( this ).serialize();
+    var dados = new FormData(this);
+    jQuery.ajax({
+      type: "POST",
+      url: "http://localhost/Slerin/lerin/php/criar_produto.php",
+      data: dados,
+      contentType: false,
+      cache: false,
+      processData:false,
+      success: function( data )
+      
+      {
+       alert('cadastro realizado com sucesso')
+       //window.location.replace("login.html")
+      },
+
+      error: function(xhr, status, error) {
+        //$('#formUser').hide();
+        //document.getElementById('msgErro_cadastro').innerHTML = 'OPS! tivemos um erro :(';
+        $('#msgSucess_logar').show(); 
+          alert(xhr.responseText);
+      }
+    });
+    
+    return false;
+  });
+});
+
 //FORM LOGAR - USER
 jQuery(document).ready(function(){
   jQuery('#logarUser').submit(function(){
     var dados = jQuery( this ).serialize();
     jQuery.ajax({
       type: "POST",
-      url: "http://localhost/lerin/php/listaClientes.php",
+      url: "http://localhost/Slerin/lerin/php/logar.php",
       data: dados,
       success: function(data)
       {
@@ -270,37 +301,6 @@ jQuery(document).ready(function(){
   });
 });
 
-//Valida CONTA - USER
-jQuery(document).ready(function(){
-  
-    var query = location.search.slice(1);
-    var partes = query.split('&');
-    var dados = {};
-    partes.forEach(function (parte) {
-        var chaveValor = parte.split('=');
-        var chave = chaveValor[0];
-        var valor = chaveValor[1];
-        dados[chave] = valor;
-    });
-  
-    jQuery.ajax({
-      type: "POST",
-      url: "https://www.superlerin.com.br/pinn/php/validaconta.php",
-      data: dados,
-      success: function(data)
-      {
-        $('#msgSucess_valida').show();
-
-      },
-      error: function(xhr, status, error) {
-        $('#msgErro_valida').show();
-        //alert(xhr.responseText);
-      }
-    });
-    
-    return false;
- 
-});
 
 //FORM RECUPERAR SENHA - envio de pedido
 jQuery(document).ready(function(){
