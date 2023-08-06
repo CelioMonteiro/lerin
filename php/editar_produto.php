@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "UPDATE tab_clientes
+$sql = "UPDATE tab_produto
             SET nome_produto = '$nome_produto', descricao = '$descricao', preco = '$preco', quantidade = '$quantidade'
             WHERE idProduto = '$idProduto'";
 
