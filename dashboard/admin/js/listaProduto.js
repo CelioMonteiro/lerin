@@ -30,7 +30,7 @@ $.ajax({
             var quantidade          = retorno[i].quantidade;
             var data_cadsatro       = retorno[i].data_cadsatro;
 
-            document.getElementById("listagem_produto").innerHTML += '<tr><td>'+idProduto+'</td><td>'+nome_produto+'</td><td>'+preco+'</td><td>'+quantidade+'</td><td class="text-right"><a href="">editar</a></td></tr>';
+            document.getElementById("listagem_produto").innerHTML += '<tr><td>'+idProduto+'</td><td>'+nome_produto+'</td><td>'+preco+'</td><td>'+quantidade+'</td><td class="text-right"><a href="editar_produto.html?idUser='+idUser+'&idProduto='+idProduto+'">editar</a></td></tr>';
         }
        
     },
