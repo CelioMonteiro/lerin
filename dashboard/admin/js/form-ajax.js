@@ -95,6 +95,31 @@ jQuery(document).ready(function(){
       return false;
   });
 });
+//EDITAR CLIENTE
+jQuery(document).ready(function(){
+  // Evento Submit do formulário
+$('#editarCliente').submit(function() {
+  var dados = new FormData(this);
+  //console.log(dados)
+  $.ajax({
+    type: "POST",
+    url: "http://localhost/Slerin/lerin/php/editar_cliente.php",
+    data:  dados,
+    contentType: false,
+    cache: false,
+    processData:false,
+    success: function(retorno){
+      console.log(retorno)
+      alert('dados atualizados com sucesso!')
+    },
+      error: function(xhr, status, error) {
+      
+      alert(xhr.responseText);
+    }
+  });
+    return false;
+});
+});
 
 //FORM GRAVAR-USER
 jQuery(document).ready(function(){

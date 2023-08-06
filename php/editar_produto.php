@@ -161,23 +161,23 @@ Coded by www.creative-tim.com
                       </div>
                       <div class="col-md-8 pr-1">
                           <div class="form-group">
-                            <label>Telefone</label>
-                            <div id="telefone"></div>
+                            <label>Descrição</label>
+                            <div id="descricao"></div>
                             
                           </div>
                       </div>
                       <div class="col-md-8 pr-1">
                           <div class="form-group">
-                            <label>Email</label>
-                            <div id="email"></div>
+                            <label>Preço</label>
+                            <div id="preco"></div>
                             
                           </div>
                       </div>
                     
                     <div class="col-md-12">
                         <div class="form-group">
-                          <label>Endereço</label>
-                          <div id="endereco"></div>
+                          <label>Quantidade</label>
+                          <div id="quantidade"></div>
                           
                         </div>
                     </div>
@@ -263,17 +263,17 @@ Coded by www.creative-tim.com
               console.log(retorno);
               for(var i = 0; i<retorno.length; i++){
                   
-                  let idCliente = retorno[i].idCliente
-                  let nome = retorno[i].nome; 
-                  var telefone       = retorno[i].telefone;
-                  var email          = retorno[i].email;
-                  var endereco       = retorno[i].endereco;
+                  let idProduto    = retorno[i].idProduto
+                  let nome         = retorno[i].nome_produto; 
+                  var descricao    = retorno[i].descricao;
+                  var preco        = retorno[i].preco;
+                  var quantidade   = retorno[i].quantidade;
                   
-                  document.getElementById('nome').innerHTML = '<input type="text" class="form-control" placeholder="Nome do cliente" name="nome" value="'+nome+'">'
-                  document.getElementById('telefone').innerHTML = '<input type="text" class="form-control" placeholder="telefone do cliente" name="telefone" value="'+telefone+'">'
-                  document.getElementById('email').innerHTML = '<input type="text" class="form-control" placeholder="email do cliente" name="email" value="'+email+'">'
-                  document.getElementById('endereco').innerHTML = '<textarea class="form-control textarea" name="endereco">'+endereco+'</textarea>'
-                  document.getElementById('idcliente').innerHTML = '<input type="hidden" name="idCliente" value="'+idCliente+'" >' 
+                  document.getElementById('nome').innerHTML = '<input type="text" class="form-control" placeholder="Nome do produto" name="nome_produto" value="'+nome+'">'
+                  document.getElementById('descricao').innerHTML = '<input type="text" class="form-control" placeholder="Descrição" name="descricao" value="'+telefone+'">'
+                  document.getElementById('preco').innerHTML = '<input type="number" class="form-control" placeholder="preco" name="preco" value="'+preco+'">'
+                  document.getElementById('quantidade').innerHTML = '<input type="number" class="form-control" name="quantidade" value="'+quantidade+'">'
+                  document.getElementById('idProduto').innerHTML = '<input type="hidden" name="idProduto" value="'+idProduto+'" >' 
               }
             
           },
