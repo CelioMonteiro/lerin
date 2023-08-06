@@ -2,7 +2,6 @@
 header("Access-Control-Allow-Origin: *");
 include_once 'conexao.php';
 
-
 $idProduto      = $_POST['idProduto'];
 $nome_produto   = $_POST['nome_produto'];
 $descricao      = $_POST['descricao']; 

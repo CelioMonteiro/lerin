@@ -95,6 +95,7 @@ jQuery(document).ready(function(){
       return false;
   });
 });
+
 //EDITAR CLIENTE
 jQuery(document).ready(function(){
   // Evento Submit do formulário
@@ -111,6 +112,34 @@ $('#editarCliente').submit(function() {
     success: function(retorno){
       console.log(retorno)
       alert('dados atualizados com sucesso!')
+      window.location.reload()
+    },
+      error: function(xhr, status, error) {
+      
+      alert(xhr.responseText);
+    }
+  });
+    return false;
+});
+});
+
+//EDITAR PRODUTO
+jQuery(document).ready(function(){
+  // Evento Submit do formulário
+$('#editarProduto').submit(function() {
+  var dados = new FormData(this);
+  //console.log(dados)
+  $.ajax({
+    type: "POST",
+    url: "http://localhost/Slerin/lerin/php/editar_produto.php",
+    data:  dados,
+    contentType: false,
+    cache: false,
+    processData:false,
+    success: function(retorno){
+      console.log(retorno)
+      alert('dados atualizados com sucesso!')
+      window.location.reload()
     },
       error: function(xhr, status, error) {
       
