@@ -133,7 +133,7 @@ Coded by www.creative-tim.com
       </nav>
       <!-- End Navbar -->
       <div class="content">
-        <div class="row" id="form_cliente" style="display:none;">
+        <div class="row" id="form_cliente" style="display:block;">
           <div class="col-md-8">
             <div class="card card-user">
               <div class="card-header">
@@ -218,7 +218,7 @@ Coded by www.creative-tim.com
   </div>
   <script src="js/jquery-2.2.3.min.js"></script>
   <script src="js/form-ajax.js"></script>
-  <script src="js/listaCliente.js"></script>
+ 
   
   <!--   Core JS Files   -->
   <script src="../assets/js/core/jquery.min.js"></script>
@@ -249,10 +249,11 @@ Coded by www.creative-tim.com
       });
 
       var idCliente = datas.idCliente
+      var idUser = datas.idUser
 
       $.ajax({
           type: "GET",
-          url: "http://localhost/Slerin/lerin/php/listaClienteUnico.php?idCliente="+idCliente,
+          url: "http://localhost/Slerin/lerin/php/listaClienteUnico.php?idCliente="+idCliente+"&idUser="+idUser,
           contentType: false,
           cache: false,
           dataType: "json",
@@ -268,10 +269,54 @@ Coded by www.creative-tim.com
                   var endereco       = retorno[i].endereco;
                   
                   document.getElementById('nome').innerHTML = '<input type="text" class="form-control" placeholder="Nome do cliente" name="nome" value="'+nome+'">'
-                  document.getElementById('email').innerHTML = '<input type="text" class="form-control" placeholder="email do cliente" name="email" value="'+email+'">'
                   document.getElementById('telefone').innerHTML = '<input type="text" class="form-control" placeholder="telefone do cliente" name="telefone" value="'+telefone+'">'
-                  document.getElementById('email').innerHTML = '<textarea class="form-control textarea" name="endereco">Entre com o endereço do cliente</textarea>'
+                  document.getElementById('email').innerHTML = '<input type="text" class="form-control" placeholder="email do cliente" name="email" value="'+email+'">'
+                  document.getElementById('endereco').innerHTML = '<textarea class="form-control textarea" name="endereco">Entre com o endereço do cliente</textarea>'
                   
+              }
+            
+          },
+            error: function(xhr, status, error) {
+            alert('erro')
+            alert(xhr.responseText);
+          }
+        }); 
+
+    }
+    mostrarDadosCliente()
+  </script>
+   <script>
+    function mostrarNomeRepresentante()
+    {
+      var query = location.search.slice(1);
+      var partes = query.split('&');
+      var datas = {};
+      partes.forEach(function (parte) {
+        var chaveValor = parte.split('=');
+        var chave = chaveValor[0];
+        var valor = chaveValor[1];
+        datas[chave] = valor;
+      });
+
+      var idUser = datas.idUser
+
+      $.ajax({
+          type: "GET",
+          url: "http://localhost/Slerin/lerin/php/listaUser.php?idUser="+idUser,
+          contentType: false,
+          cache: false,
+          dataType: "json",
+          data: datas,
+          processData:false,
+          success: function(retorno){
+              console.log(retorno);
+              for(var i = 0; i<retorno.length; i++){
+                  
+                  let primeiro_nome = retorno[i].primeiro_nome; 
+                  var segundo_nome  = retorno[i].segundo_nome;
+                  var telefone    = retorno[i].telefone;
+                  var email       = retorno[i].email;
+                  document.getElementById("mostraUser").innerHTML += '<input type="text" class="form-control" disabled="" placeholder="Company" value="'+primeiro_nome+'"><input type="hidden" value="'+idUser+'" name="idRepresentante" />';
               }
             
           },

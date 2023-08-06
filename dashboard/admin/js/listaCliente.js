@@ -22,11 +22,12 @@ $.ajax({
         console.log(retorno);
         for(var i = 0; i<retorno.length; i++){
             
+            var idCliente   = retorno[i].idCliente;
             var nome        = retorno[i].nome;
             var telefone    = retorno[i].telefone;
             var email       = retorno[i].email;
             var endereco    = retorno[i].endereco;
-            document.getElementById("listaClientes").innerHTML += '<tr><td>'+nome+'</td><td>'+email+'</td><td>'+telefone+'</td><td class="text-right"><a href="">editar</a></td></tr>';
+            document.getElementById("listaClientes").innerHTML += '<tr><td>'+nome+'</td><td>'+email+'</td><td>'+telefone+'</td><td class="text-right"><a href="editar_cliente.html?idCliente='+idCliente+'&idUser='+idUser+'">editar</a></td></tr>';
         }
        
     },
