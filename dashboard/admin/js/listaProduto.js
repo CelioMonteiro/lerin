@@ -28,9 +28,9 @@ $.ajax({
             var descricao           = retorno[i].descricao;
             var preco               = retorno[i].preco;
             var quantidade          = retorno[i].quantidade;
-            var data_cadsatro       = retorno[i].data_cadsatro;
+            var data_cadastro       = retorno[i].data_cadastro;
 
-            document.getElementById("listagem_produto").innerHTML += '<tr><td>'+idProduto+'</td><td>'+nome_produto+'</td><td>'+preco+'</td><td>'+quantidade+'</td><td class="text-right"><a href="editar_produto.html?idUser='+idUser+'&idProduto='+idProduto+'">editar</a></td></tr>';
+            document.getElementById("listagem_produto").innerHTML += '<tr><td>'+idProduto+'</td><td>'+nome_produto+'</td><td>'+preco+'</td><td>'+quantidade+'</td><td>'+data_cadastro+'</td><td class="text-right"><a href="editar_produto.html?idUser='+idUser+'&idProduto='+idProduto+'">editar</a></td></tr>';
         }
        
     },

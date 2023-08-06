@@ -28,11 +28,11 @@ var idUser = datas.idUser
             let idProduto           = retorno[i].idProduto;
             let quantidade          = retorno[i].quantidade;
             let descricao           = retorno[i].descricao;
-            let data_cadsatro       = retorno[i].data_cadsatro;
+            let data_cadastro       = retorno[i].data_cadastro;
             let nome_cliente        = retorno[i].nome_cliente
             let nome_produto        = retorno[i].nome_produto;
              
-            document.getElementById("listaVendas").innerHTML += '<tr><td>'+idVenda+'</td><td>'+nome_cliente+'</td><td>'+nome_produto+'</td><td>'+quantidade+'</td><td class="text-right"><a href="">editar</a></td></tr>';
+            document.getElementById("listaVendas").innerHTML += '<tr><td>'+idVenda+'</td><td>'+nome_cliente+'</td><td>'+nome_produto+'</td><td>'+quantidade+'</td><td>'+data_cadastro+'</td><td class="text-right"><a href="">editar</a></td></tr>';
         }
        
     },

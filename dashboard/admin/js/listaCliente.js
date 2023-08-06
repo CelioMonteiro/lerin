@@ -27,7 +27,9 @@ $.ajax({
             var telefone    = retorno[i].telefone;
             var email       = retorno[i].email;
             var endereco    = retorno[i].endereco;
-            document.getElementById("listaClientes").innerHTML += '<tr><td>'+nome+'</td><td>'+email+'</td><td>'+telefone+'</td><td class="text-right"><a href="editar_cliente.html?idCliente='+idCliente+'&idUser='+idUser+'">editar</a></td></tr>';
+            var data_cadastro =retorno[i].data_cadastro;
+
+            document.getElementById("listaClientes").innerHTML += '<tr><td>'+nome+'</td><td>'+email+'</td><td>'+telefone+'</td><td>'+data_cadastro+'</td><td class="text-right"><a href="editar_cliente.html?idCliente='+idCliente+'&idUser='+idUser+'">editar</a></td></tr>';
         }
        
     },
