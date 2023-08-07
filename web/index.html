@@ -128,7 +128,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <div class="col-lg-6 wthree-form-left py-sm-5">
                     <!-- register form grid -->
                     <div class="register-top1">
-                        <form action="#" method="post" class="register-wthree" id="gravarUser">
+                        <form action="#" method="post" class="register-wthree" id="gravarCliente">
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-md-2 d-md-flex align-items-end justify-content-end px-md-0">
@@ -136,17 +136,27 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                             <span class="fas fa-user"></span>
                                         </label>
                                     </div>
-                                    <div class="col-md-5">
+                                    <div class="col-md-10">
                                         <label>
-                                            Primeiro nome
+                                            Nome
                                         </label>
-                                        <input class="form-control" type="text" placeholder="Carlos" name="primeiro_nome" required="">
+                                        <input class="form-control" type="text" placeholder="Carlos" name="nome" required="">
+                                        <input type="hidden" name="idRepresentante"/>
+                                    
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-2 d-md-flex align-items-end justify-content-end px-md-0">
+                                        <label class="mb-0">
+                                            <span class="fas fa-envelope-open"></span>
+                                        </label>
                                     </div>
-                                    <div class="col-md-5">
+                                    <div class="col-md-10">
                                         <label>
-                                            Último nome
+                                            Telefone
                                         </label>
-                                        <input class="form-control" type="text" placeholder="Silva" name="segundo_nome" required="">
+                                        <input class="form-control" type="text" placeholder="(xx) xxxx-xxxx" name="telefone" required="">
                                     </div>
                                 </div>
                             </div>
@@ -169,32 +179,18 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 <div class="row">
                                     <div class="col-md-2 d-md-flex align-items-end justify-content-end px-md-0">
                                         <label class="mb-0">
-                                            <span class="fas fa-lock"></span>
+                                            <span class="fas fa-envelope-open"></span>
                                         </label>
                                     </div>
                                     <div class="col-md-10">
                                         <label>
-                                            senha
+                                            Endereço
                                         </label>
-                                        <input type="password" class="form-control" placeholder="*******" name="senha" id="password1" required="">
+                                        <input class="form-control" type="text" placeholder="endereço" name="endereco" required="">
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-md-2 d-md-flex align-items-end justify-content-end px-md-0">
-                                        <label class="mb-0">
-                                            <span class="fas fa-lock"></span>
-                                        </label>
-                                    </div>
-                                    <div class="col-md-10">
-                                        <label>
-                                            confirmar senha
-                                        </label>
-                                        <input type="password" class="form-control" placeholder="*******" name="confirma_senha" id="password2" required="">
-                                    </div>
-                                </div>
-                            </div>
+                            
                             <div class="row mt-lg-5 mt-3">
                                 <div class="offset-2"></div>
                                 <div class="col-md-10">

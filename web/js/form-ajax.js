@@ -1,3 +1,73 @@
+//Enviar Estado
+jQuery(document).ready(function(){
+  // Evento Submit do formulário
+$('#filtroEstado').submit(function() {
+ 
+  var dadosForm = jQuery( this ).serialize();
+  dadosForm = dadosForm.split('&');
+
+  var dados = new FormData(this);
+   
+  $.ajax({
+    type: "POST",
+    dataType: "json",
+    url: "https://www.superlerin.com.br/boa/php/FiltroEstado.php",
+    data:  dados,
+    contentType: false,
+    cache: false,
+    processData:false,
+    success: function(retorno){
+      
+      var idUser = retorno.idUser
+      var idEstado = retorno.idEstado
+      var idCidade = retorno.idCidade
+     // console.log(idUser)
+     window.location.href = 'categoria.html?idUser='+idUser+'&cidade='+idCidade; 
+    
+    },
+      error: function(xhr, status, error) {
+      alert(xhr.responseText);
+    }
+
+  });
+    return false;
+});
+});
+
+//enviar cidade / estado
+jQuery(document).ready(function(){
+    // Evento Submit do formulário
+  $('#filtroCidade').submit(function() {
+   
+    var dadosForm = jQuery( this ).serialize();
+    dadosForm = dadosForm.split('&');
+  
+    var dados = new FormData(this);
+     
+    $.ajax({
+      type: "POST",
+      dataType: "json",
+      url: "https://www.superlerin.com.br/boa/php/filtroCidade.php",
+      data:  dados,
+      contentType: false,
+      cache: false,
+      processData:false,
+      success: function(retorno){
+        
+        var idUser = retorno.idUser
+        var idCidade = retorno.idCidade
+       // console.log(idUser)
+        window.location.href = 'filtroCategoria.html?idUser='+idUser+'&cidade='+idCidade;  	
+      
+      },
+        error: function(xhr, status, error) {
+        alert(xhr.responseText);
+      }
+
+    });
+      return false;
+  });
+});
 
 jQuery(document).ready(function(){
     // Evento Submit do formulário
@@ -24,6 +94,60 @@ jQuery(document).ready(function(){
     });
       return false;
   });
+});
+
+//EDITAR CLIENTE
+jQuery(document).ready(function(){
+  // Evento Submit do formulário
+$('#editarCliente').submit(function() {
+  var dados = new FormData(this);
+  //console.log(dados)
+  $.ajax({
+    type: "POST",
+    url: "http://localhost/Slerin/lerin/php/editar_cliente.php",
+    data:  dados,
+    contentType: false,
+    cache: false,
+    processData:false,
+    success: function(retorno){
+      console.log(retorno)
+      alert('dados atualizados com sucesso!')
+      window.location.reload()
+    },
+      error: function(xhr, status, error) {
+      
+      alert(xhr.responseText);
+    }
+  });
+    return false;
+});
+});
+
+//EDITAR PRODUTO
+jQuery(document).ready(function(){
+  // Evento Submit do formulário
+$('#editarProduto').submit(function() {
+  var dados = new FormData(this);
+  //console.log(dados)
+  $.ajax({
+    type: "POST",
+    url: "http://localhost/Slerin/lerin/php/editar_produto.php",
+    data:  dados,
+    contentType: false,
+    cache: false,
+    processData:false,
+    success: function(retorno){
+      console.log(retorno)
+      alert('dados atualizados com sucesso!')
+      window.location.reload()
+    },
+      error: function(xhr, status, error) {
+      
+      alert(xhr.responseText);
+    }
+  });
+    return false;
+});
 });
 
 //FORM GRAVAR-USER
@@ -73,6 +197,7 @@ jQuery(document).ready(function(){
       
       {
        alert('cadastro realizado com sucesso')
+       window.location.reload()
        //window.location.replace("login.html")
       },
 
@@ -103,6 +228,7 @@ jQuery(document).ready(function(){
       
       {
        alert('cadastro realizado com sucesso')
+       window.location.reload()
        //window.location.replace("login.html")
       },
 
@@ -134,6 +260,7 @@ jQuery(document).ready(function(){
       
       {
        alert('cadastro realizado com sucesso')
+       window.location.reload()
        //window.location.replace("login.html")
       },
 
@@ -168,7 +295,7 @@ jQuery(document).ready(function(){
         if(idUser != 0){
           //console.log(userName)
           alert('Seja Bem Vindo')
-          window.location.replace("http://localhost/slerin/lerin/dashboard/admin/criar_cliente.html?idUser="+idUser)
+          window.location.replace("http://localhost/lerin/dashboard/admin/criar_cliente.html?idUser="+idUser)
         }
         else
         {
@@ -177,6 +304,8 @@ jQuery(document).ready(function(){
           location.reload();
         }
     
+        
+
       },
       error: function(xhr, status, error) {
         alert(xhr.responseText);
