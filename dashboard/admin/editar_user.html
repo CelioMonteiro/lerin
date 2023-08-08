@@ -140,25 +140,35 @@ Coded by www.creative-tim.com
                 <h5 class="card-title">Cliente</h5>
               </div>
               <div class="card-body">
-                <form action="#" id="editarCliente" method="post">
+                <form action="#" id="editUser" method="post">
                   <div class="row">
                     <div class="col-md-6 pr-1">
                       <div class="form-group">
-                        <label>Representante</label>
+                        <!--label>Representante</label-->
                         
                         <div id="mostraUser"></div>
-                        <div id="idcliente"></div>
+                       
                       </div>
                     </div>
                   </div>
                   <div class="row">
-                     
-                      <div class="col-md-8 pr-1">
+                    <div class="col-md-8 pr-1">
                         <div class="form-group">
-                          <label>Nome</label>
-                          <div id="nome"></div>
+                            <label>Tipo</label>
+                            <select name="tipo" class="form-group" id="tipo"></select>
+                            
+                            
+                          </div>
+                        <div class="form-group">
+                          <label>Primeiro Nome</label>
+                          <div id="primeiro_nome"></div>
                           
                         </div>
+                        <div class="form-group">
+                            <label>Segundo Nome</label>
+                            <div id="segundo_nome"></div>
+                            
+                          </div>
                       </div>
                       <div class="col-md-8 pr-1">
                           <div class="form-group">
@@ -175,13 +185,7 @@ Coded by www.creative-tim.com
                           </div>
                       </div>
                     
-                    <div class="col-md-12">
-                        <div class="form-group">
-                          <label>Endereço</label>
-                          <div id="endereco"></div>
-                          
-                        </div>
-                    </div>
+                    
                   </div>
                   <div class="row">
                     <div class="update ml-auto mr-auto">
@@ -249,12 +253,11 @@ Coded by www.creative-tim.com
         datas[chave] = valor;
       });
 
-      var idCliente = datas.idCliente
       var idUser = datas.idUser
 
       $.ajax({
           type: "GET",
-          url: "http://localhost/Slerin/lerin/php/listaClienteUnico.php?idCliente="+idCliente+"&idUser="+idUser,
+          url: "http://localhost/Slerin/lerin/php/listaUser.php?idUser="+idUser,
           contentType: false,
           cache: false,
           dataType: "json",
@@ -263,18 +266,29 @@ Coded by www.creative-tim.com
           success: function(retorno){
               console.log(retorno);
               for(var i = 0; i<retorno.length; i++){
+                
+                  let tipo              = retorno[i].tipo;
+                  let primeiro_nome     = retorno[i].primeiro_nome; 
+                  let segundo_nome      = retorno[i].segundo_nome; 
+                  let telefone          = retorno[i].telefone;
+                  let email             = retorno[i].email;
                   
-                  let idCliente = retorno[i].idCliente
-                  let nome = retorno[i].nome; 
-                  var telefone       = retorno[i].telefone;
-                  var email          = retorno[i].email;
-                  var endereco       = retorno[i].endereco;
-                  
-                  document.getElementById('nome').innerHTML = '<input type="text" class="form-control" placeholder="Nome do cliente" name="nome" value="'+nome+'">'
+                  document.getElementById('primeiro_nome').innerHTML = '<input type="text" class="form-control" placeholder="Nome do cliente" name="primeiro_nome" value="'+primeiro_nome+'">'
+                  document.getElementById('segundo_nome').innerHTML = '<input type="text" class="form-control" placeholder="segundo nome" name="segundo_nome" value="'+segundo_nome+'">'
                   document.getElementById('telefone').innerHTML = '<input type="text" class="form-control" placeholder="telefone do cliente" name="telefone" value="'+telefone+'">'
                   document.getElementById('email').innerHTML = '<input type="text" class="form-control" placeholder="email do cliente" name="email" value="'+email+'">'
-                  document.getElementById('endereco').innerHTML = '<textarea class="form-control textarea" name="endereco">'+endereco+'</textarea>'
-                  document.getElementById('idcliente').innerHTML = '<input type="hidden" name="idCliente" value="'+idCliente+'" >' 
+                  
+                  if(tipo == 0)
+                  {
+                    document.getElementById('tipo').innerHTML = '<option value="'+tipo+'" class="form-control">ADM</option><option value="1" class="form-control">Padrão</option>'
+                    
+                  }
+                  else{
+                    document.getElementById('tipo').innerHTML = '<option value="'+tipo+'" class="form-control">Padrão</option><option value="0" class="form-control">ADM</option>'
+                  
+                  }
+
+                  //document.getElementById('idcliente').innerHTML = '<input type="hidden" name="idCliente" value="'+idCliente+'" >' 
               }
             
           },
@@ -287,7 +301,7 @@ Coded by www.creative-tim.com
     }
     mostrarDadosCliente()
   </script>
-   <script>
+  <script>
     function mostrarNomeRepresentante()
     {
       var query = location.search.slice(1);
@@ -318,7 +332,7 @@ Coded by www.creative-tim.com
                   var segundo_nome  = retorno[i].segundo_nome;
                   var telefone    = retorno[i].telefone;
                   var email       = retorno[i].email;
-                  document.getElementById("mostraUser").innerHTML += '<input type="text" class="form-control" disabled="" placeholder="Company" value="'+primeiro_nome+'"><input type="hidden" value="'+idUser+'" name="idRepresentante" />';
+                  document.getElementById("mostraUser").innerHTML += '<input type="hidden" class="form-control" disabled="" placeholder="Company" value="'+primeiro_nome+'"><input type="hidden" value="'+idUser+'" name="idRepresentante" />';
               }
             
           },
@@ -349,6 +363,9 @@ Coded by www.creative-tim.com
       document.getElementById("listarMenu").innerHTML += '<li><a href="../../web"><i class="nc-icon nc-paper"></i><p>Site</p></a></li><li class="active"><a href="./criar_cliente.html?idUser='+idUser+'"><i class="nc-icon nc-single-02"></i><p>Clientes</p></a></li><li><a href="./criar_venda.html?idUser='+idUser+'"><i class="nc-icon nc-single-copy-04"></i><p>Venda</p></a></li><li><a href="./criar_produto.html?idUser='+idUser+'"><i class="nc-icon nc-bag-16"></i><p>Produto</p></a></li>'
     }
     motrarMenu()
+  </script>
+  <script>
+
   </script>
 </body>
 

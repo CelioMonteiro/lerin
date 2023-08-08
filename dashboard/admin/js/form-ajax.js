@@ -69,6 +69,8 @@ jQuery(document).ready(function(){
   });
 });
 
+
+//EDITAR USER
 jQuery(document).ready(function(){
     // Evento Submit do formulário
   $('#editUser').submit(function() {
@@ -76,19 +78,18 @@ jQuery(document).ready(function(){
     //console.log(dados)
     $.ajax({
       type: "POST",
-      url: "https://www.superlerin.com.br/pinn/php/edituser.php",
+      url: "http://localhost/Slerin/lerin/php/edit_user.php",
       data:  dados,
       contentType: false,
       cache: false,
       processData:false,
       success: function(retorno){
         console.log(retorno)
-        $('#msgSucess').show();
-        $('.login-form').hide();
+        alert(retorno)
+        window.location.reload()
+        
       },
         error: function(xhr, status, error) {
-        $('#msgSucess').hide();
-        $('.login-form').hide();
         alert(xhr.responseText);
       }
     });
@@ -167,6 +168,7 @@ jQuery(document).ready(function(){
         {
          let texto =  data
          alert(texto)
+         window.location.reload()
          //window.location.replace("login.html")
         },
 

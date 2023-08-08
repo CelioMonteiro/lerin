@@ -28,7 +28,7 @@ $.ajax({
             var email           = retorno[i].email;
             var data_cadastro   = retorno[i].data_cadastro;
 
-            document.getElementById("listaUser").innerHTML += '<tr><td>'+idUser+'</td><td>'+primeiro_nome+'</td><td>'+email+'</td><td>'+data_cadastro+'</td><td class="text-right"><a href="editar_user.html?idUser='+idUser+'&idUser='+idUser+'">editar</a></td></tr>';
+            document.getElementById("listaUser").innerHTML += '<tr><td>'+idUser+'</td><td>'+primeiro_nome+'</td><td>'+email+'</td><td>'+data_cadastro+'</td><td class="text-right"><a href="editar_user.html?idUser='+idUser+'">editar</a></td></tr>';
         }
        
     },
