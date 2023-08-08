@@ -21,7 +21,7 @@ Coded by www.creative-tim.com
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Lerin ADMIN - Cliente
+    Lerin ADMIN - Produto
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -75,7 +75,7 @@ Coded by www.creative-tim.com
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="javascript:;">Administação de clientes</a>
+            <a class="navbar-brand" href="javascript:;">Administação de Produtos</a>
             <button class="btn btn-primary btn-round" onclick="verformCliente()" id="BtnNovo">Novo</button>
             <button class="btn btn-primary btn-round" onclick="verListagemClientes()" id="BtnListagem" style="display: none;">Listagem</button>
             
@@ -137,7 +137,7 @@ Coded by www.creative-tim.com
           <div class="col-md-8">
             <div class="card card-user">
               <div class="card-header">
-                <h5 class="card-title">Cliente</h5>
+                <h5 class="card-title">Produtos</h5>
               </div>
               <div class="card-body">
                 <form action="#" id="editarProduto" method="post">
@@ -345,11 +345,37 @@ Coded by www.creative-tim.com
       });
   
       var idUser = datas.idUser
-  
-      document.getElementById("listarMenu").innerHTML += '<li><a href="../../web"><i class="nc-icon nc-paper"></i><p>Site</p></a></li><li><a href="./criar_cliente.html?idUser='+idUser+'"><i class="nc-icon nc-single-02"></i><p>Clientes</p></a></li><li><a href="./criar_venda.html?idUser='+idUser+'"><i class="nc-icon nc-single-copy-04"></i><p>Venda</p></a></li><li class="active"><a href="./criar_produto.html?idUser='+idUser+'"><i class="nc-icon nc-bag-16"></i><p>Produto</p></a></li>'
-    }
+      $.ajax({
+          type: "GET",
+          url: "http://localhost/Slerin/lerin/php/listaUser.php?idUser="+idUser,
+          contentType: false,
+          cache: false,
+          dataType: "json",
+          data: datas,
+          processData:false,
+          success: function(retorno){
+              for(var i = 0; i<retorno.length; i++){
+                  let tipo      = retorno[i].tipo  
+                  
+                  if(tipo == 0)
+                  {
+                    document.getElementById("listarMenu").innerHTML += '<li><a href="../../web" target="_blank"><i class="nc-icon nc-paper"></i><p>Site</p></a></li><li><a href="./criar_user.html?idUser='+idUser+'" target="_blank"><i class="nc-icon nc-circle-10"></i><p>Usuários</p></a></li><li><a href="./criar_cliente.html?idUser='+idUser+'"><i class="nc-icon nc-single-02"></i><p>Clientes</p></a></li><li><a href="./criar_venda.html?idUser='+idUser+'"><i class="nc-icon nc-single-copy-04"></i><p>Venda</p></a></li><li class="active"><a href="./criar_produto.html?idUser='+idUser+'"><i class="nc-icon nc-bag-16"></i><p>Produto</p></a></li>'
+                  }
+                  else{
+                    document.getElementById("listarMenu").innerHTML += '<li><a href="../../web" target="_blank"><i class="nc-icon nc-paper"></i><p>Site</p></a></li><li><a href="./criar_cliente.html?idUser='+idUser+'"><i class="nc-icon nc-single-02"></i><p>Clientes</p></a></li><li><a href="./criar_venda.html?idUser='+idUser+'"><i class="nc-icon nc-single-copy-04"></i><p>Venda</p></a></li><li class="active"><a href="./criar_produto.html?idUser='+idUser+'"><i class="nc-icon nc-bag-16"></i><p>Produto</p></a></li>'
+                  }
+                }
+          },
+            error: function(xhr, status, error) {
+            alert('erro')
+            alert(xhr.responseText);
+          }
+         
+        }); 
+      }
+    
+    
     motrarMenu()
   </script>
-</body>
 
 </html>
