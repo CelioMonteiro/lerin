@@ -3,11 +3,14 @@ header("Access-Control-Allow-Origin: *");
 
 include_once 'conexao.php';
 
-$primeiro_nome	= utf8_decode($_POST['primeiro_nome']);
-$segundo_nome	= utf8_decode($_POST['segundo_nome']);
+$idRepresentante = $_POST['idRepresentante'];
+$primeiro_nome	= $_POST['primeiro_nome'];
+$segundo_nome	= $_POST['segundo_nome'];
 
-$email	= $_POST['email'];
-$senha	= $_POST['senha'];
+$email			= $_POST['email'];
+$telefone		= $_POST['telefone'];
+$tipo			= $_POST['tipo'];
+$senha			= $_POST['senha'];
 $confimra_senha = $_POST['confirma_senha'];
 
 $termo  = 1;
@@ -34,17 +37,23 @@ if ($resultEmail->num_rows > 0) {
 	$sql = "INSERT INTO 
 			tab_user 
 				(
+				idRepresentante,
+				tipo,
 				primeiro_nome,
 				segundo_nome,
 				email, 
+				telefone,
 				senha,
                 data_cadastro
 				) 
 			VALUES 		
 			(
+				'$idRepresentante',	
+				'$tipo',
 				'$primeiro_nome',
 				'$segundo_nome',
-				'$email', 
+				'$email',
+				'$telefone', 
 				'$senha',
 				current_timestamp()
 			)";

@@ -165,7 +165,8 @@ jQuery(document).ready(function(){
         success: function( data )
         
         {
-         alert('cadastro realizado com sucesso')
+         let texto =  data
+         alert(texto)
          //window.location.replace("login.html")
         },
 
