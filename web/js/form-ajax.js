@@ -295,7 +295,7 @@ jQuery(document).ready(function(){
         if(idUser != 0){
           //console.log(userName)
           alert('Seja Bem Vindo')
-          window.location.replace("http://localhost/lerin/dashboard/admin/criar_cliente.html?idUser="+idUser)
+          window.location.replace("http://localhost/Slerin/lerin/dashboard/admin/criar_cliente.html?idUser="+idUser)
         }
         else
         {
