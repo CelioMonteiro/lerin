@@ -45,7 +45,7 @@ Coded by www.creative-tim.com
           <!-- <p>CT</p> -->
         </a>
         <a href="https://www.creative-tim.com" class="simple-text logo-normal">
-          Creative Tim
+          <div id="listaNomeUser"></div>
           <!-- <div class="logo-image-big">
             <img src="../assets/img/logo-big.png">
           </div> -->
@@ -376,6 +376,46 @@ Coded by www.creative-tim.com
     
     
     motrarMenu()
+  </script>
+  <script>
+    function dadosUser()
+    {
+      var query = location.search.slice(1);
+      var partes = query.split('&');
+      var datas = {};
+      partes.forEach(function (parte) {
+        var chaveValor = parte.split('=');
+        var chave = chaveValor[0];
+        var valor = chaveValor[1];
+        datas[chave] = valor;
+      });
+  
+      var idUser = datas.idUser
+  
+      $.ajax({
+          type: "GET",
+          url: "http://localhost/Slerin/lerin/php/listaUser.php?idUser="+idUser,
+          contentType: false,
+          cache: false,
+          dataType: "json",
+          data: datas,
+          processData:false,
+          success: function(retorno){
+              for(var i = 0; i<retorno.length; i++){
+                  var primeiro_nome      = retorno[i].primeiro_nome  
+                  
+                  
+                  document.getElementById("listaNomeUser").innerHTML += primeiro_nome;
+              }
+            
+          },
+            error: function(xhr, status, error) {
+            alert('erro')
+            alert(xhr.responseText);
+          }
+        }); 
+      }
+      dadosUser()
   </script>
 </body>
 
