@@ -27,3 +27,6 @@ CREATE TABLE tab_produto(
     data_cadastro TIMESTAMP,
     PRIMARY KEY (idProduto)
 );
+
+
+
