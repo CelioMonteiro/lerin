@@ -1,4 +1,4 @@
-CREATE tab_clientes(
+CREATE TABLE tab_clientes(
     idCliente int NOT NULL,
     idRepresentante int,
     nome      varchar(255),
